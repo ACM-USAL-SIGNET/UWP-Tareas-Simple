@@ -10,7 +10,7 @@
         <Style x:Key="CabeceraTexto" TargetType="TextBlock">
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="FontSize" Value="26"/>
-            <Setter Property="VerticalAlignment" Value="Center"></Setter>
+            <Setter Property="VerticalAlignment" Value="Center"/>
         </Style>
     </Page.Resources>  
     <Page.DataContext>
@@ -30,8 +30,8 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock VerticalAlignment="Center" Text="{Binding Numero}"></TextBlock>
-                        <TextBox VerticalAlignment="Center" Text="{Binding Info}"></TextBox>
+                        <TextBlock VerticalAlignment="Center" Text="{Binding Numero}"/>
+                        <TextBox VerticalAlignment="Center" Text="{Binding Info}"/>
                     </StackPanel>
                 </DataTemplate> 
             </ListView.ItemTemplate>
