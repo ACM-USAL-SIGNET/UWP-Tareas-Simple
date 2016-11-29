@@ -6,48 +6,57 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d" Background="White">
+
     <Page.Resources>
         <Style x:Key="CabeceraTexto" TargetType="TextBlock">
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="FontSize" Value="26"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
         </Style>
-    </Page.Resources>  
+    </Page.Resources>
+
     <Page.DataContext>
         <local:ViewModel></local:ViewModel>
     </Page.DataContext>
-    <Grid> 
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition Height="Auto"></RowDefinition>
-            </Grid.RowDefinitions>
+
+    <Grid>
+        <!-- Vamos a definir cuántas y cómo serán las filas que hay -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <!-- La altura se adaptará a lo que ocupen los controles -->
+            <RowDefinition/>
+            <!-- Se adapta al espacio que haya (el restante) -->
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
         <Grid Grid.Row="0" Background="Coral" Padding="10">
-            <TextBlock Text="&#xE133;" FontFamily="Segoe MDL2 Assets" Style="{StaticResource CabeceraTexto}"></TextBlock>
-            <TextBlock  HorizontalAlignment="Center" Style="{StaticResource CabeceraTexto}">Tareas</TextBlock>
-        </Grid> 
-        <ListView Grid.Row="1" ItemsSource="{Binding Tareas}">
+            <TextBlock Style="{StaticResource CabeceraTexto}" Text="&#xE133;" FontFamily="Segoe MDL2 Assets"/>
+            <TextBlock Style="{StaticResource CabeceraTexto}" Text="Tareas" HorizontalAlignment="Center"/>
+        </Grid>
+
+        <ListView Grid.Row="1" ItemsSource="{Binding Tareas}" Background="White">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock VerticalAlignment="Center" Text="{Binding Numero}"/>
-                        <TextBox VerticalAlignment="Center" Text="{Binding Info}"/>
+                        <TextBlock Text="{Binding Numero}" VerticalAlignment="Center"/>
+                        <TextBox Text="{Binding Info}" VerticalAlignment="Center"/>
                     </StackPanel>
-                </DataTemplate> 
+                </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+
         <Grid Grid.Row="2" Background="MidnightBlue" Padding="10">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="2*"></ColumnDefinition>
-                <ColumnDefinition Width="*"></ColumnDefinition>
-                <ColumnDefinition Width="4*"></ColumnDefinition>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="4*"/>
             </Grid.ColumnDefinitions>
 
-            <TextBlock Grid.Column="0" Style="{StaticResource CabeceraTexto}">Tareas:</TextBlock>
-            <TextBlock Grid.Column="1" Text="{Binding Tareas.Count}" Style="{StaticResource CabeceraTexto}"></TextBlock>
-            <Button Grid.Column="2" Click="ButtonBase_OnClick" Background="Coral">
-                <TextBlock Style="{StaticResource CabeceraTexto}">Añadir tarea</TextBlock>
-            </Button>
-        </Grid>    
+            <TextBlock Grid.Column="0" Style="{StaticResource CabeceraTexto}" Text="Tareas:"/>
+
+            <TextBlock Grid.Column="1" Style="{StaticResource CabeceraTexto}" Text="{Binding Tareas.Count}"/>
+
+            <Button Grid.Column="2" Click="ButtonBase_OnClick" Background="Coral" Foreground="White" Content="Añadir tarea" HorizontalAlignment="Stretch"/>
+        </Grid>
     </Grid>
 </Page>
